@@ -7,14 +7,18 @@ struct Pravokutnik
     int b;
     int x;
     int y;
-    int s;
 };
 struct Kruznica
 {
     int fipola;
     int x;
     int y;
-    int s;
+};
+struct Vektor
+{
+    int x;
+    int y;
+    int z;
 };
 
 int broj_pravokutnika(Pravokutnik prav,Kruznica kruz,int& rez_pravokutnika){ //vraca broj pravokutnika u povrsini kruznice
@@ -39,14 +43,12 @@ int* alocirani_niz(int &referenca){ //input koji prima u funkciji ispisuje u mai
     int* niz=new int[10];
     while(true){
         int x;
-        int i=0;
         cin >> x;
         if(referenca%10==0){
             int* niz=new int[referenca*2];
         }
         if(x>0){
-            niz[i]=x;
-            i++;
+            niz[referenca]=x;
             referenca++;
         }
         else
@@ -67,7 +69,7 @@ int* zbroj_prethodnika(int *niz,int n){ //u primljenom nizu zbraja zadnja dva pr
     }
 return novi;
 }
-int min_max(int niz[],int n,int& min,int &max){  //ispisuje najmanji i najveci broj u nizu!
+void min_max(int niz[],int n,int& min,int &max){  //ispisuje najmanji i najveci broj u nizu!
     min=niz[0];
     max=niz[0];
     for(int i=0;i<n;i++){
@@ -99,7 +101,6 @@ int main(){
 
     //peti zadatak!
     int referenca=0;
-    int ref=0;
     int* nizakpod=alocirani_niz(referenca);
     //int len=(sizeof(nizakpod)/sizeof(nizakpod));
     
@@ -110,6 +111,7 @@ int main(){
     free(nizakpod);
 
     //treci zadatak
+    int ref=0;
     for(int i=0;i<n;i++){
      cout<<"Referencirani element je"<<vraca_referencu(niz,ref)<<endl;
      ref++;
@@ -120,4 +122,5 @@ int main(){
     Kruznica kruz;
     cout<<broj_pravokutnika(*prav,kruz,rez_pravokutnika)<<endl;
     //sesti zadatak
+
 }
