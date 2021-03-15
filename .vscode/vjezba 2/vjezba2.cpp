@@ -5,22 +5,44 @@ struct Pravokutnik
 {
     int a;
     int b;
+    int x;
+    int y;
+    int s;
 };
 struct Kruznica
 {
-
-    int fi;
+    int fipola;
+    int x;
+    int y;
+    int s;
 };
 
+int broj_pravokutnika(Pravokutnik prav,Kruznica kruz,int& rez_pravokutnika){ //vraca broj pravokutnika u povrsini kruznice
+    cout << "Unesi za kruznicu : polumjer i poziciju u kordinatnom sustavu(x,y)"<<endl;
+    cin >> kruz.fipola >> kruz.x >> kruz.y;
+    for(int i=0;i<3;i++){
+        cout << "Unesi za pravokutnik : sirinu/2,visinu/2 i poziciju u kordinatnom sustavu(x,y) "<<endl;
+        cin >> prav.a >> prav.b >> prav.x >> prav.y;
+        if(abs(prav.x-kruz.x)<=kruz.fipola+prav.a && abs(prav.y-kruz.y)<=kruz.fipola+prav.b){
+                rez_pravokutnika++;        
+            }   
+    }
+return rez_pravokutnika;
+}
 
-int& alocirani_niz(int &referenca){
-    int* niz=(int*)malloc(sizeof(int)*10);
+int& vraca_referencu(int niz[],int &ref){ //vraca referencu na element niza
+    return niz[ref];
+}
+
+
+int* alocirani_niz(int &referenca){ //input koji prima u funkciji ispisuje u mainu
+    int* niz=new int[10];
     while(true){
         int x;
         int i=0;
         cin >> x;
         if(referenca%10==0){
-            int* niz=(int*)malloc(sizeof(int)*2);
+            int* niz=new int[referenca*2];
         }
         if(x>0){
             niz[i]=x;
@@ -33,8 +55,8 @@ int& alocirani_niz(int &referenca){
     }
     return niz;
 }
-int* zbroj_prethodnika(int *niz,int n){
-    int* novi=(int*)malloc(sizeof(int)*n);
+int* zbroj_prethodnika(int *niz,int n){ //u primljenom nizu zbraja zadnja dva prethodnika te zbrojem mijenja mjesto trenutnog indexa
+    int* novi=new int[n];
     for(int i=0;i<n;i++){
         if(i>1){
             novi[i]=niz[i-1]+niz[i-2];
@@ -45,7 +67,7 @@ int* zbroj_prethodnika(int *niz,int n){
     }
 return novi;
 }
-int min_max(int niz[],int n,int& min,int &max){
+int min_max(int niz[],int n,int& min,int &max){  //ispisuje najmanji i najveci broj u nizu!
     min=niz[0];
     max=niz[0];
     for(int i=0;i<n;i++){
@@ -77,12 +99,25 @@ int main(){
 
     //peti zadatak!
     int referenca=0;
+    int ref=0;
     int* nizakpod=alocirani_niz(referenca);
     //int len=(sizeof(nizakpod)/sizeof(nizakpod));
     
     cout << referenca<<endl;
     for(int z=0;z<referenca;z++){
-        cout<<"Alocirani niz je "<<nizakpod[z]<<endl;
+        cout<<"Alocirani niz je  "<<nizakpod[z]<<endl;
     }
     free(nizakpod);
+
+    //treci zadatak
+    for(int i=0;i<n;i++){
+     cout<<"Referencirani element je"<<vraca_referencu(niz,ref)<<endl;
+     ref++;
+    }
+    //drugi zadatak
+    int rez_pravokutnika;
+    Pravokutnik prav[3];
+    Kruznica kruz;
+    cout<<broj_pravokutnika(*prav,kruz,rez_pravokutnika)<<endl;
+    //sesti zadatak
 }
