@@ -7,21 +7,50 @@ using namespace std;
 
 //-------------------------------------------------Meta-----------------------------------------------//
 class Meta{
-    int dl,ur;
+public:
+    int dx,dy;
+    int gx,gy;
     int a,b;
+private:
     bool pogodena;
 };
 //---------------------------------------------------Oruzje-------------------------------------------//
 class Oruzje{
+   public:
     double x,y,z;
     int spremnik;
-    int trenutni;
-    bool shoot;
+    int trenutnimeci;
+    int shoot;
     bool reload;
 };
 
-void odredi_mete(Meta* meta,int a,int b,int dl,int ur,int n){
-    Meta* meta=new Meta[n];
+Meta* odredi_mete(Meta* meta,int n){
+    Meta* mete=new Meta[n];
+    for(int i=0;i<n;i++){
+        cout<<"Donja lijeva tocka x:"<<"Donja lijeva tocka y:"<<"Gornja desna tocka x:"<<"Gornja desna tocka y:"<<"Duljina a stranice:"<<"Duljina b stranice:"<<endl;
+        cin>>mete[i].dx>>mete[i].dy>>mete[i].gx>>mete[i].gy>>mete[i].a>>mete[i].b;
+    }
+return mete;
+}
+int pogodene_mete(Oruzje kalas,Meta* meta,int n){
+    kalas.x=0;
+    kalas.y=0;
+    kalas.spremnik=30;
+    kalas.trenutnimeci=30;
+    while(kalas.trenutnimeci!=0){
+        cout<<"Unesi putanju metka u kordinatnom sustavu(x,y)"<<""<<endl;
+        cin>>kalas.x>>kalas.y;
+        for(int i=0;i<n;i++){
+            if(meta[i].dx>=kalas.x && meta[i].gx<=kalas.x && meta[i].dy<=kalas.y && meta[i].gy>=kalas.y){
+                kalas.shoot++;
+                kalas.trenutnimeci--;
+            }
+        }
+        kalas.trenutnimeci--; 
+    }
+    kalas.reload=true;
+    kalas.trenutnimeci=kalas.spremnik;
+    return kalas.shoot;
 }
 // //---------------------------------------------------Klasa vektora------------------------------------//
 // class Vector {                    
@@ -129,8 +158,15 @@ int main(){
     // cout<<tocka.threedistance(2,2,2);
     //-----------------------------------------peti zadatak---------------------!!
     int n;
-    cin>>"Broj meta:">>n;
+    Meta* meta;
+    Oruzje kalas;
+    cout<<"Broj meta:";
+    cin>>n;
     cout<<n<<endl;
-    broj_meta(n);    
+    meta=odredi_mete(meta,n);
+    cout<<pogodene_mete(kalas,meta,n);
+    
+    
+      
 return 0;
 }
