@@ -36,7 +36,7 @@ int pogodene_mete(Oruzje kalas,Meta* meta,int n){
     kalas.x=0;
     kalas.y=0;
     kalas.spremnik=30;
-    kalas.trenutnimeci=30;
+    kalas.trenutnimeci=5;
     while(kalas.trenutnimeci!=0){
         cout<<"Unesi putanju metka u kordinatnom sustavu(x,y)"<<""<<endl;
         cin>>kalas.x>>kalas.y;
