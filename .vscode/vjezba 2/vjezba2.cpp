@@ -14,12 +14,41 @@ struct Kruznica
     int x;
     int y;
 };
-struct Vektor
-{
-    int x;
-    int y;
-    int z;
+struct Vector {                    
+    double* element;
+    int logicka;
+    int fizicka;
 };
+    void vector_new(int logicka,int fizicka,double* element){
+        logicka=0;
+        fizicka=1;
+        element= new double;
+         
+    } 
+    void vector_delete(int logicka,double* element){
+        for(int i=0;i<logicka;i++){
+            delete &element[i];
+        }
+        delete[] element;
+        } 
+    void vector_push_back(int x,double* element,int logicka){
+        // cout<<"Unesi novi element vektora";
+        // cin>>element[logicka];
+        element[logicka]=x;
+        logicka++;
+    } 
+    void vector_pop_back(int logicka,double* element){
+        double* temp=new double[logicka-1];
+        for(int i=0;i<(logicka-1);i++){
+            temp[i]=element[i];
+        }
+        delete[] element;
+        element=temp;
+        logicka--;
+    }
+    int vector_front(double* element){return element[0];}
+    int vector_back(double* element,int logicka){return element[logicka-1];}
+    int vector_size(int logicka){return logicka;} 
 
 int broj_pravokutnika(Pravokutnik prav,Kruznica kruz,int& rez_pravokutnika){ //vraca broj pravokutnika u povrsini kruznice
     cout << "Unesi za kruznicu : polumjer i poziciju u kordinatnom sustavu(x,y)"<<endl;
@@ -122,5 +151,13 @@ int main(){
     Kruznica kruz;
     cout<<broj_pravokutnika(*prav,kruz,rez_pravokutnika)<<endl;
     //sesti zadatak
-
+    Vector vector;
+    int x;
+    cin>>x;
+    vector_new(vector.logicka,vector.fizicka,vector.element);
+    vector_push_back(x,vector.element,vector.logicka);
+    //vector.vector_pop_back();
+    //vector.vector_print();
+    cout<<vector_front(vector.element)<<vector_back(vector.element,vector.logicka)<<endl;
+    vector_delete(vector.logicka,vector.element);
 }
