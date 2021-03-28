@@ -1,11 +1,11 @@
 class Board{
   public:
-    int a;
-    int b;
+    int* a;
+    int* b;
     const char rub='!';
     Board();
     Board(Board &b);
-    Board(int a,int b);
+    Board(int* a,int* b);
     ~Board();
     
 };
