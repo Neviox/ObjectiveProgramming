@@ -1,66 +1,71 @@
 #include <iostream>
 #include "zad1.hpp"
 using namespace std;
+                 
+    Vector::Vector(){
+        element=0;
+        logicka=0;
+        fizicka=0;
+        cout<<"Ulaz u konstruktor stvaranja"<<endl;
 
-class Vector {                    
-    double* element;
-    int logicka;
-    int fizicka;
-
-    Vector(){
-        Vector* v=new Vector;
     }
-    Vector(int n,int k){
-        if(k==true){
-        for(int i=0;i<n;i++){
-            element[i]=k;
+    Vector::Vector(int n,double k){
+        fizicka=n;
+        logicka=n*4;
+        if(&k==NULL){
+            for(int i=0;i<fizicka;i++){
+                element[i]=0;
             }
         }
-    }
-    Vector(int n,int k,Vector* v){
-        Vector* cpy=new Vector;
-        cpy->logicka=n;
-        for(int i=0;i<n;i++){
-            cpy->element[i]=v->element[i];
+        else{
+            for(int i=0;i<fizicka;i++){
+                element[i]=k;
+            }
         }
+        cout<<"Ulaz u konstruktor punjenja"<<endl;
     }
-    void vector_new(){
+    Vector::Vector(Vector &v) {
+        cout<<"Ulaz u konstruktor kopiranja"<<endl;
+        cout<<v.fizicka<<"---"<<v.logicka<<endl;
+        fizicka = v.fizicka;
+        logicka = v.logicka;
+        element=v.element;
+        
+    }
+
+    Vector::~Vector(){
+        cout<<"Unistenje za 3,2,1..."<<endl;
+    }
+    void Vector::vector_new(){
         logicka=0;
         fizicka=1;
         element= new double;
          
     } 
-    void vector_delete(){
+    void Vector::vector_delete(){
         for(int i=0;i<logicka;i++){
             delete &element[i];
         }
         delete[] element;
         } 
-    void vector_push_back(int x){
+    void Vector::vector_push_back(int x){
         element[logicka]=x;
         logicka++;
     } 
-    void vector_pop_back(){
+    void Vector::vector_pop_back(){
         double* temp=new double[logicka-1];
-        for(int i=0;i<(logicka-1);i++){
-            temp[i]=element[i];
-        }
-        delete[] element;
-        element=temp;
-        logicka--;
     }
-    int vector_front(){return element[0];}
-    int vector_back(){return element[logicka-1];}
-    int vector_size(){return logicka;} 
-    void vector_print(){
-        for(int i=0;i<logicka;i++){
-            cout<<element[i]<<endl;
-        }
+    void Vector::vector_print(){
+        for(int i=0;i<fizicka;i++){
+        cout<<element[i]<<endl;
+      }
     }
-};
-
 
 int main(){
     Vector v1;
-
+    Vector v2(3,2);
+    Vector v3(v2);
+    v3.vector_print();
+    
+return 0;
 }
