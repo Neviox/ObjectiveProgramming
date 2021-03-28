@@ -10,14 +10,12 @@ Board::Board(){
     cin>>*a>>*b;
     cout<<"Stvaranje ruba s znakom "<<rub<<endl;
     }
-Board::Board(Board &ploca){
+Board::Board(Board &ploca){ //---------------------Copy constructor---------------//
     cout<<"Kopiranje klase s znakom"<<rub<<endl;
     a=ploca.a;
     b=ploca.b;
     }
-Board::Board(int* a,int* b){
-    cout<<"U konstruktoru ploce s znakom "<<rub<<endl;
-    cout<<"Sirina je "<<*a<<"\nVisina je  "<<*b<<endl;
+Board::Board(int* a,int* b){ //------------------Izrada Ploce-----------------//
      for (int i = 1; i <= *a; i++) 
     { 
         for (int j = 1; j <= *b; j++) 
@@ -29,7 +27,7 @@ Board::Board(int* a,int* b){
     } 
   
 }
-Board::~Board(){
+Board::~Board(){//-----------------deconstruktor----------//
     cout<<"dekonstruktor"<<endl;
 }
 
