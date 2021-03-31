@@ -198,7 +198,7 @@ int main(){
     meta[i].setMeta(q,w,e,r,t,z);
     }
 
-    cout<<pogodene_mete(kalas,meta,n);
+    cout<<"Broj pogodenih meta="<<pogodene_mete(kalas,meta,n);
     
     
       
