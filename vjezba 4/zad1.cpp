@@ -26,11 +26,11 @@ using namespace std;
     }
     Vector::Vector(Vector &v) {
         cout<<"Ulaz u konstruktor kopiranja"<<endl;
-        cout<<v.fizicka<<"---"<<v.logicka<<endl;
-        fizicka = v.fizicka;
-        logicka = v.logicka;
-        element=v.element;
-        
+        Vector* vektor=new Vector;
+        vektor->element=v.element;
+        vektor->fizicka=v.fizicka;
+        vektor->logicka=v.logicka;
+          
     }
 
     Vector::~Vector(){
@@ -53,7 +53,15 @@ using namespace std;
         logicka++;
     } 
     void Vector::vector_pop_back(){
-        double* temp=new double[logicka-1];
+        if(element[logicka-1]!= 0){
+            double* temp=new double[logicka-1];
+            for(int i=0;i<(logicka-1);i++){
+                temp[i]=element[i];
+            }
+        delete[] element;
+        element=temp;
+        logicka--;
+        }
     }
     void Vector::vector_print(){
         for(int i=0;i<fizicka;i++){

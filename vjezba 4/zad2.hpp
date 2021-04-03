@@ -1,20 +1,20 @@
 struct Point{
   public:
     double x,y;
-    const char ch='x';
     Point(double x,double y);
-    void draw_up_line(Point p,Point p1);
-    void draw_line(Point p,Point p1);
-    void display();
     ~Point();
 };
 class Board{
   public:
-    int a;
-    int b;
+    int a,b;
     const char rub='!';
-    char** matrix;
-    void draw_char(Point p,char ch);
+    int** matrix;
+    int xb,yb;
+    char znak;
+    void draw_char(Point& p,char ch);
+    void draw_up_line(Point& p,char ch);
+    void draw_line(Point& p,Point& p1,char ch);
+    void display(Point& p);
     Board();
     Board(Board &b);
     Board(int a,int b);
