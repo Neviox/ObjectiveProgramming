@@ -5,11 +5,12 @@
 #include <math.h> 
 using namespace std;
 
-////-------------------------------------------------Meta-----------------------------------------------//
+//-------------------------------------------------Meta-----------------------------------------------//
 class Meta{
         int dx,dy;
         int gx,gy;
         int a,b;
+       
           
     public: 
         void setMeta(int q,int w,int e,int r,int t,int z);
@@ -19,16 +20,31 @@ class Meta{
         int getMeta_gy();
         int getMeta_a();
         int getMeta_b();
+        
 };
 //---------------------------------------------------Oruzje-------------------------------------------//
 class Oruzje{
    public:
     double x,y,z;
-    int spremnik;
+    const int spremnik=7;
     int trenutnimeci;
-    int shoot;
-    bool reload;
+    int pogodak=0;
+    void shoot(Meta* meta,int n);
+    void reload();
+    void pogodena();
+    int get_pogodena();
 };
+   void Oruzje::reload(){
+        trenutnimeci=spremnik;
+    }
+    void Oruzje::pogodena(){
+        pogodak++;
+    }
+    int Oruzje::get_pogodena(){
+        return pogodak;
+    }
+
+
 void Meta::setMeta(int q,int w,int e,int r,int t,int z) {
         dx=q;
         dy=w;
@@ -45,27 +61,46 @@ int Meta::getMeta_dy(){return dy;}
 int Meta::getMeta_gx(){return gx;}
 int Meta::getMeta_gy(){return gy;}
 
-int pogodene_mete(Oruzje kalas,Meta* meta,int n){
-    kalas.x=0;
-    kalas.y=0;
-    kalas.spremnik=30;
-    kalas.trenutnimeci=5;
-    while(kalas.trenutnimeci!=0){
+void Oruzje::shoot(Meta* meta,int n){
+    x=0;
+    y=0;
+    trenutnimeci=5;
+    cout<<"Pocetan broj metaka"<<trenutnimeci<<endl;
+    while(trenutnimeci!=0){
         cout<<"Unesi putanju metka u kordinatnom sustavu(x,y)"<<""<<endl;
-        cin>>kalas.x>>kalas.y;
+        cin>>x>>y;
         for(int i=0;i<n;i++){
-            if(meta[i].getMeta_dx()>=kalas.x && meta[i].getMeta_gx()<=kalas.x && meta[i].getMeta_dy()<=kalas.y && meta[i].getMeta_gy()>=kalas.y){
-                kalas.shoot++;
-                kalas.trenutnimeci--;
+            if(meta[i].getMeta_dx()<=x && meta[i].getMeta_gx()>=x && meta[i].getMeta_dy()<=y && meta[i].getMeta_gy()>=y){
+                pogodena();
             }
         }
-        kalas.trenutnimeci--; 
+    trenutnimeci-=1;
+    cout<<"broj pogodaka"<<pogodak<<"   Broj metaka  "<<trenutnimeci<<endl;  
     }
-    kalas.reload=true;
-    kalas.trenutnimeci=kalas.spremnik;
-    return kalas.shoot;
+    reload();
 }
-// //---------------------------------------------------Klasa vektora------------------------------------//
+ 
+// int Meta::pogodene_mete(Oruzje kalas,Meta* meta,int n){
+//     kalas.x=0;
+//     kalas.y=0;
+//     kalas.spremnik=30;
+//     kalas.trenutnimeci=5;
+//     int pogodak=0;
+//     while(kalas.trenutnimeci!=0){
+//         cout<<"Unesi putanju metka u kordinatnom sustavu(x,y)"<<""<<endl;
+//         cin>>kalas.x>>kalas.y;
+//         for(int i=0;i<n;i++){
+//             if(meta[i].getMeta_dx()>=kalas.x && meta[i].getMeta_gx()<=kalas.x && meta[i].getMeta_dy()<=kalas.y && meta[i].getMeta_gy()>=kalas.y){
+//                 kalas.shoot();
+//                 pogodak++;
+//             }
+//         }
+//         kalas.shoot(); 
+//     }
+//     kalas.reload();
+//     return pogodak;
+// }
+//---------------------------------------------------Klasa vektora------------------------------------//
 class Vector {                    
     double* element;
     int logicka;
@@ -157,50 +192,50 @@ public:
     };
 
 
-int main(){
-    //-----------------------------------------prvi zadatak-----------------------!!
-    Vector vector;
-    vector.vector_new();
-    vector.vector_push_back(2);
-    vector.vector_push_back(4);
-    vector.vector_push_back(2);
-    //vector.vector_pop_back();
-    //vector.vector_print();
-    cout<<vector.vector_front()<<vector.vector_back()<<endl;
-    vector.vector_delete();
-    vector.vector_print();
+ int main(){
+    // //-----------------------------------------prvi zadatak-----------------------!!
+    // Vector vector;
+    // vector.vector_new();
+    // vector.vector_push_back(2);
+    // vector.vector_push_back(4);
+    // vector.vector_push_back(2);
+    // //vector.vector_pop_back();
+    // //vector.vector_print();
+    // cout<<vector.vector_front()<<vector.vector_back()<<endl;
+    // vector.vector_delete();
+    // vector.vector_print();
     
-    //-----------------------------------------drugi zadatak---------------------!!
-    Tocka tocka,tocka2;
-    srand (time(NULL));
-    int min=2;
-    int max=20;
-    double rx;
-    double ry;
-    double rz; 
-    //tocka.nula(); 
-    tocka.asset(min,max);
-    tocka2.asset(min,max);
-    tocka.value_get(rx,ry,rz);
-    tocka2.value_get(rx,ry,rz);
-    cout<<tocka.twodistance(tocka,tocka2)<<endl;
-    cout<<tocka.threedistance(tocka,tocka2);
+    // //-----------------------------------------drugi zadatak---------------------!!
+    // Tocka tocka,tocka2;
+    // srand (time(NULL));
+    // int min=2;
+    // int max=20;
+    // double rx;
+    // double ry;
+    // double rz; 
+    // //tocka.nula(); 
+    // tocka.asset(min,max);
+    // tocka2.asset(min,max);
+    // tocka.value_get(rx,ry,rz);
+    // tocka2.value_get(rx,ry,rz);
+    // cout<<tocka.twodistance(tocka,tocka2)<<endl;
+    // cout<<tocka.threedistance(tocka,tocka2);
     //-----------------------------------------peti zadatak---------------------!!
-    int n;
-    cout<<"Broj meta:";
-    cin>>n;
-    Meta* meta;
+    
+    Meta* m;
     Oruzje kalas;
+    int broj_meta;
     int q,w,e,r,t,z;
-    for(int i=0;i<n;i++){
+    cout<<"Broj meta:";
+    cin>>broj_meta;
+    for(int i=0;i<broj_meta;i++){
     cout<<"Donja lijeva tocka x:"<<"Donja lijeva tocka y:"<<"Gornja desna tocka x:"<<"Gornja desna tocka y:"<<"Duljina a stranice:"<<"Duljina b stranice:"<<endl;
     cin>>q>>w>>e>>r>>t>>z;
-    meta[i].setMeta(q,w,e,r,t,z);
+    m[i].setMeta(q,w,e,r,t,z);
     }
-
-    cout<<"Broj pogodenih meta="<<pogodene_mete(kalas,meta,n);
+    kalas.shoot(m,broj_meta);
+    int pogodak=kalas.get_pogodena();
+    cout<<"Broj pogodaka="<<pogodak<<endl;
     
-    
-      
 return 0;
 }

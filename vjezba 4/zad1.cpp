@@ -27,7 +27,9 @@ using namespace std;
     Vector::Vector(Vector &v) {
         cout<<"Ulaz u konstruktor kopiranja"<<endl;
         Vector* vektor=new Vector;
-        vektor->element=v.element;
+        for(int i=0;i<v.logicka;i++){
+        vektor->element[i]=v.element[i];
+        }
         vektor->fizicka=v.fizicka;
         vektor->logicka=v.logicka;
           
