@@ -80,26 +80,6 @@ void Oruzje::shoot(Meta* meta,int n){
     reload();
 }
  
-// int Meta::pogodene_mete(Oruzje kalas,Meta* meta,int n){
-//     kalas.x=0;
-//     kalas.y=0;
-//     kalas.spremnik=30;
-//     kalas.trenutnimeci=5;
-//     int pogodak=0;
-//     while(kalas.trenutnimeci!=0){
-//         cout<<"Unesi putanju metka u kordinatnom sustavu(x,y)"<<""<<endl;
-//         cin>>kalas.x>>kalas.y;
-//         for(int i=0;i<n;i++){
-//             if(meta[i].getMeta_dx()>=kalas.x && meta[i].getMeta_gx()<=kalas.x && meta[i].getMeta_dy()<=kalas.y && meta[i].getMeta_gy()>=kalas.y){
-//                 kalas.shoot();
-//                 pogodak++;
-//             }
-//         }
-//         kalas.shoot(); 
-//     }
-//     kalas.reload();
-//     return pogodak;
-// }
 //---------------------------------------------------Klasa vektora------------------------------------//
 class Vector {                    
     double* element;
