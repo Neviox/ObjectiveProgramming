@@ -16,11 +16,9 @@ Board::Board(){
 }
 Board::Board(Board &ploca){ //---------------------Copy constructor---------------//
     cout<<"Kopiranje klase s znakom"<<rub<<endl;
-    a=ploca.a;
-    b=ploca.b;
-    ploca.matrix[a]=matrix[a];
-    for(int i = 0; i < a; i++){
-        ploca.matrix[i]=matrix[b];
+    vrijednosti=new double[a*b];
+    for(int i = 0; i < a*b; i++){
+        vrijednosti[i]=ploca.vrijednosti[i];
     }
     }
 Board::Board(int z,int p){ //------------------Izrada Ploce-----------------//

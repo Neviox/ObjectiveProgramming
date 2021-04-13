@@ -11,6 +11,7 @@ class Board{
     int** matrix;
     int xb,yb;
     char znak;
+    double* vrijednosti;
     void draw_char(Point& p,char ch);
     void draw_up_line(Point& p,char ch);
     void draw_line(Point& p,Point& p1,char ch);
