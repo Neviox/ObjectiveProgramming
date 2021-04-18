@@ -45,12 +45,14 @@ void Japanez::getresult()
 void Japanez::printResult() const
 {
 	cout << "----------------- RESULTS -----------------" << endl;
-     if (playerwon)
-		cout << "Player won "<<endl;
-	else if (computerwon)
-		cout << "Computer won"<<endl;
+     if (playerwon){
+		cout << "            Player "<<_player->getplayername()<<" won "<<endl;
+        cout<<endl<<endl;}
+	else if (computerwon){
+		cout << "               Computer won"<<endl;
+        cout <<endl;}
 	cout <<"Player "<<_player->getplayername()<<" points: "<<_player->zbrojruke<<endl<<"Computer points: "<<_computer->zbrojkomp<<endl;
-	cout << endl << endl;
+	cout << endl;
 }
 
 void Japanez::reset()

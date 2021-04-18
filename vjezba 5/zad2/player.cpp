@@ -25,6 +25,9 @@ void HumanPlayer::ruka(){
         else if(unos==5){
             _zbroj+=petica;
         }
+        else if(unos==0){
+            _zbroj+=0;
+        }
         else{--i;}
     }
     zbrojruke=_zbroj;
