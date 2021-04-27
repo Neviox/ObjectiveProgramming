@@ -17,6 +17,6 @@ int main(){
     c.set_zbroj(tukac);
     c.set_zbroj(tarantino);
     c.set_zbroj(kopao);
-    cout<<c.get_zbroj();
+    cout<<"Broj nogu :"<<c.get_zbroj();
     return 0;
 }

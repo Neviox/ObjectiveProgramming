@@ -7,9 +7,12 @@ class Zivotinja{
         unsigned noge;
         string nova_zivotinja="dodan:";
     public:
+        Zivotinja(){
+            cout<<"Dodan:";
+        }
         virtual int broj_nogu()=0;
         virtual string vrsta(){return nova_zivotinja;}
-        virtual void print(){cout<<vrsta()<<"\n";}
+        virtual void print(){cout<<vrsta();}
         virtual ~Zivotinja();
 };
 class Kukac : public Zivotinja{
