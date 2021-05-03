@@ -13,14 +13,14 @@ class Vehicle{                          //------------------------bazna klasa---
     }
 };
 
-class Watercraft:public Vehicle{        //---------------------vodeni tip vozila----------------------------//
+class Watercraft:virtual public Vehicle{        //---------------------vodeni tip vozila----------------------------//
     string type="water";
     public:
     string get_type(){return type;}
 
 };
 
-class Aircraft:public Vehicle{          //------------------------zracni tip vozila----------------------//
+class Aircraft:virtual public Vehicle{          //------------------------zracni tip vozila----------------------//
     string type="air";
     public:
     string get_type(){return type;}
