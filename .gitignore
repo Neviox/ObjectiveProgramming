@@ -1,7 +1,14 @@
-*/.exe
-*/launch.json
-*/settings.json
-*/tempCodeRunnerFile.cpp
-*/BlackJack ASCII Project
-*/.vscode
+.exe
+launch.json
+settings.json
+tempCodeRunnerFile.cpp
+BlackJack ASCII Project
+.vscode
+.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/c_cpp_properties.json
+*.doc#
+*.exe
+*.doc
 
