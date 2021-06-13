@@ -1,6 +1,6 @@
-exe
-launch
-settings
+.exe
+launch.json
+settings.json
 tempCodeRunnerFile.cpp
 BlackJack ASCII Project
 .vscode
